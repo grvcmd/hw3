@@ -31,6 +31,12 @@ class ShoppingCart:
         self.cart_items.append(item_to_be_added)
         return True
 
+    # method to remove an item from cart_items list
+    def remove_item(self, item_to_be_removed):
+        if item_to_be_removed in self.cart_items:
+            self.cart_items.remove(item_to_be_removed)
+        else:
+            print('Item not found in cart. Nothing removed.')
 
 if __name__ == "__main__":
     item1 = ItemToPurchase()
