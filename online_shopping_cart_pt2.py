@@ -47,12 +47,29 @@ class ShoppingCart:
     def get_num_items_in_cart(self):
         print(len(self.cart_items))
 
-    # method to get total cost of items in the cart
+    # method to return the total cost of all items in the cart
     def get_cost_of_cart(self):
         total_cost = 0
         cost = 0
         for i in self.cart_items:
             cost = (i.item_quantity * i.item_price)
+            total_cost += cost
+        return total_cost
+
+    # method to print the total cost of objects in cart.
+    def print_total(self):
+        total_cost = self.get_cost_of_cart()
+        if total_cost == 0:
+            print('SHOPPING CART IS EMPTY')
+        else:
+            print("{}'s Shopping Cart - {}".format(self.customer_name, self.current_date))
+            print('Number of Items: {}'.format(self.get_num_items_in_cart()))
+            for i in self.cart_items:
+                total = i.item_price * i.item_quantity
+                print('{} {} @ ${} = ${}'.format(i.item_name, i.item_quantity, i.item_price, total))
+            print('Total: ${}'.format(total_cost()))
+
+
 
 if __name__ == "__main__":
     pass
