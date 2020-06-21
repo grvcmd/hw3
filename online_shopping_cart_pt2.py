@@ -25,6 +25,8 @@ class ItemToPurchase:
     def print_item_description(self):
         print('')
 
+# ------------------------------------------------------------------------------------
+
 # Create "shopping cart" class
 class ShoppingCart:
     def __init__(self):
@@ -33,25 +35,43 @@ class ShoppingCart:
         self.current_date = 'January 1, 2016'
         self.cart_items = []
 
-    # method to add an item to the shopping list
-    def add_item(self):
-        self.cart_items.append(ItemToPurchase)
+    #  TODO: finish method to add an item to the shopping cart
+    def add_item(self, itemToPurchase):
+        self.cart_items.append(itemToPurchase)
 
-    # method to remove an item from the shopping cart
+    # TODO: finish method to remove an item from the shopping cart
     def remove_item(self, item_to_remove):
 
         tremove_item = False
-        # loop to find the item in the cart
+        # loop to find the item in the shopping cart
         for item in self.cart_items:
             if item.item_name == item_to_remove:
                 self.cart_items.remove(item)
                 tremove_item = True
                 break
-        # if not item not found
+        # if item not found in the shopping cart
         if not tremove_item:
-            print('Item not found in the card. Nothing removed')
+            print('Item not found in cart. Nothing removed')
 
 
+    # TODO: finish method to modify quantity of an item in the shopping cart
+    def modify_item(self, itemToPurchase):
+
+        tmodify_item = False
+        # loop to find an item in the shopping cart
+        for i in range(len(self.cart_items)):
+
+            if self.cart_items[i].item_name == itemToPurchase.item_name:
+                tmodify_item = True
+                self.cart_items[i].item_quantity = itemToPurchase.item_quantity
+                break
+
+        # if item not found in shopping cart
+        if not tmodify_item:
+            print('Item not found in cart. Nothing modified.')
+
+
+# --------------------------------------------------------------------------------------------
 
     # Main section
 if __name__ == "__main__":
