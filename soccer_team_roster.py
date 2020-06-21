@@ -103,3 +103,34 @@ def update_player_rating():
     # the key, value pair in player_dict
     player_dict[jersey_number] = player_rating
 
+# Define output_player_above_rating() function
+def output_player_above_rating():
+
+    # Prompt user for a rating.
+    print("Enter a rating:")
+    rating = int(input())
+
+    # Make sure rating is between 1 - 9
+    while (rating < 1) or (rating > 9):
+        print("Invalid rating! Please enter again!")
+        print("Enter a rating:")
+        rating = int(input())
+
+    # Print specified rating
+    print("ABOVE {}".format(rating))
+
+    # Call sort_dict_keys() function to get sorted list
+    #  of keys from player_dict
+    sorted_list_keys = sort_dict_keys()
+
+    # Search the list of keys
+    for i in sorted_list_keys:
+        # If current rating in the dictionary is
+        # greater than the entered rating then...
+        if player_dict[i] > rating:
+            # Print the current player's jersey number
+            # and rating
+            print("Jersey number: {}, Rating: {}".format(i, player_dict[i]))
+
+
+
