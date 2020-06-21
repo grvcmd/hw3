@@ -15,15 +15,21 @@ class ItemToPurchase:
         print('{} {} @ ${} = ${}'.format(self.item_name, int(self.item_quantity), int(self.item_price),
                                          int(self.total())))
 
+    # TODO: output should be >>> Bottled Water: Deer Park, 12 oz.
     def print_item_description(self):
         print(self.item_description)
 
 class ShoppingCart:
+    # constructor to initialize the shopping cart
     def __init__(self, customer_name = 'none', current_date = 'January 1, 2016'):
         self.customer_name = customer_name
         self.current_date = current_date
         self.cart_items = []
 
+    # method to an item to cart_items list
+    def add_item(self, item_to_be_added):
+        self.cart_items.append(item_to_be_added)
+        return True
 
 
 if __name__ == "__main__":
