@@ -17,7 +17,7 @@ class ItemToPurchase:
 
     # TODO: output should be >>> Bottled Water: Deer Park, 12 oz.
     def print_item_description(self):
-        print(self.item_description)
+        print('{}: {}'.format(self.item_name, self.item_description))
 
 class ShoppingCart:
     # constructor to initialize the shopping cart
@@ -69,6 +69,13 @@ class ShoppingCart:
                 print('{} {} @ ${} = ${}'.format(i.item_name, i.item_quantity, i.item_price, total))
             print('Total: ${}'.format(total_cost()))
 
+    # method to print each items' description
+    def print_descriptions(self):
+            print("{}'s Shopping Cart - {}".format(self.customer_name, self.current_date))
+            print()
+            print('Item Descriptions')
+            for i in self.cart_items:
+                i.print_item_description()
 
 
 if __name__ == "__main__":
