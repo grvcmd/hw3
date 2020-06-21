@@ -51,7 +51,7 @@ def add_user():
 
     # Check if player_rating is between 1 - 9
     # If not, ask user to enter player_rating again.
-    while ((player_rating < 1) or (player_rating > 9)):
+    while (player_rating < 1) or (player_rating > 9):
         print("Invalid Rating! Please enter again!")
         print("Enter the player's rating:")
         player_rating = int(input())
@@ -74,4 +74,32 @@ def delete_player():
         del player_dict[jersey_number]
 
 
+# OBJ 6:
+# Define update_player_rating() function
+def update_player_rating():
+
+    # Prompt user for player's jersey number
+    print("Enter a jersey number:")
+    jersey_number = int(input())
+
+    # Check if jersey number is between 0 - 99
+    # If not prompt user again to enter jersey number
+    while (jersey_number < 0) or (jersey_number > 99):
+        print("Invalid jersey number! Please enter again!")
+        print("Enter a jersey number:")
+        jersey_number = int(input())
+
+    # Prompt user for the player's new rating
+    print("Enter a new rating for player:")
+    player_rating = int(input())
+
+    # Make sure player rating is between 1 - 9
+    while (player_rating < 1) or (player_rating > 9):
+        print("Invalid rating! Please enter again!")
+        print("Enter a new rating for player:")
+        player_rating = int(input())
+
+    # Update player's rating by updating
+    # the key, value pair in player_dict
+    player_dict[jersey_number] = player_rating
 
