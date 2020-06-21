@@ -61,3 +61,17 @@ def add_user():
     player_dict.update({jersey_num : player_rating})
 
 
+# OBJ 5:
+# Define delete_player() function
+def delete_player():
+
+    # Prompt user for a player's jersey number.
+    print("Enter a jersey number:")
+    jersey_number = int(input())
+
+    # Remove that player from the roster (delete jersey number and rating)
+    if jersey_number in player_dict:
+        del player_dict[jersey_number]
+
+
+
