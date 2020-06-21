@@ -38,6 +38,15 @@ class ShoppingCart:
         else:
             print('Item not found in cart. Nothing removed.')
 
+    # TODO: finish method to modify an item's quantity
+    def modify_item(self, item_to_be_modified):
+        if item_to_be_modified in self.cart_items:
+            item_to_be_modified
+
+    # method to get the # of items in a cart
+    def get_num_items_in_cart(self):
+        print(len(self.cart_items))
+
 if __name__ == "__main__":
     item1 = ItemToPurchase()
     item2 = ItemToPurchase()
