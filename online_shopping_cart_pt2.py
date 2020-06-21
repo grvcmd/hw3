@@ -47,7 +47,12 @@ class ShoppingCart:
     def get_num_items_in_cart(self):
         print(len(self.cart_items))
 
-if __name__ == "__main__":
-    item1 = ItemToPurchase()
-    item2 = ItemToPurchase()
+    # method to get total cost of items in the cart
+    def get_cost_of_cart(self):
+        total_cost = 0
+        cost = 0
+        for i in self.cart_items:
+            cost = (i.item_quantity * i.item_price)
 
+if __name__ == "__main__":
+    pass
