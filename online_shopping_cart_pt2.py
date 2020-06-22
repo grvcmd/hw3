@@ -1,47 +1,116 @@
-# Lab 10.17
+# Lab 10.19
 
+
+# Define ItemToPurchase class.
 class ItemToPurchase:
-    def __init__(self, name = 'none', price = 0, quantity = 0, description = 'none'):
+
+    # Define default constructor and initialize parameters
+    def __init__(self, name='none', price=0, quantity=0, description='none'):
         self.item_name = name
         self.item_price = price
         self.item_quantity = quantity
+
+        # OBJ 1:
+        # Add item_description attribute
         self.item_description = description
 
+    # Define total() function
     def total(self):
         price = self.item_quantity * self.item_price
         return price
 
+    # Define print_item_cost() method to display
+    # item name, price, quantity, and total cost.
     def print_item_cost(self):
-        print('{} {} @ ${} = ${}'.format(self.item_name, int(self.item_quantity), int(self.item_price),
-                                         int(self.total())))
+        print('{} {} @ ${} = ${}'.format(self.item_name, self.item_quantity, self.item_price, self.total()))
 
-    # TODO: output should be >>> Bottled Water: Deer Park, 12 oz.
+    # Define print_item_description() function
+    # Ex. output >>> Bottled Water: Deer Park, 12 oz.
     def print_item_description(self):
         print('{}: {}'.format(self.item_name, self.item_description))
 
+
+# OBJ 2:
+# Define ShoppingCart class.
 class ShoppingCart:
-    # constructor to initialize the shopping cart
-    def __init__(self, customer_name = 'none', current_date = 'January 1, 2016'):
+
+    # Define constructor to initialize the shopping cart and its parameters
+    def __init__(self, customer_name='none', current_date='January 1, 2016', cart_items=[]):
         self.customer_name = customer_name
         self.current_date = current_date
-        self.cart_items = []
+        self.cart_items = cart_items
 
-    # method to an item to cart_items list
-    def add_item(self, item_to_be_added):
-        self.cart_items.append(item_to_be_added)
-        return True
+    # Define add_item() function
+    # Needs to have an ItemToPurchase parameter
+    def add_item(self, ItemToPurchase):
 
-    # method to remove an item from cart_items list
-    def remove_item(self, item_to_be_removed):
-        if item_to_be_removed in self.cart_items:
-            self.cart_items.remove(item_to_be_removed)
-        else:
-            print('Item not found in cart. Nothing removed.')
+        # Append required object of ItemToPurchase class
+        # in the cart_items list.
+        self.cart_items.append(ItemToPurchase)
 
-    # TODO: finish method to modify an item's quantity
-    def modify_item(self, item_to_be_modified):
-        if item_to_be_modified in self.cart_items:
-            item_to_be_modified
+    # Define remove_item() function
+    def remove_item(self, item_name):
+
+        # Go through cart_items list using For Loop
+        for object in self.cart_items:
+
+            # If current object in cart_items list matches given
+            # item name, then that item is removed from the list.
+            if object.item_name == item_name:
+                self.cart_items.remove(object)
+                return  # Causes us to return from the function
+
+        # If item not found in cart_items list then
+        # provide a message
+        print("\nItem not found in cart. Nothing removed.")
+
+    # Define modify_item() function with ItemToPurchase parameter
+    # Does not return anything
+    def modify_item(self, ItemToPurchase):
+
+        # Declare & initialize a boolean variable to false.
+        item_found = False
+
+        # Go through cart_items list using For Loop.
+        for object in self.cart_items:
+
+            # If object in cart_items list matches the given
+            # item to modify, then the item_found variable will be True
+            if object.item_name == ItemToPurchase.item_name:
+                item_found = True
+
+                # Prompt user to enter the new item quantity
+                print("Enter the new quantity:")
+                item_quantity = int(input())
+
+                # Assign current object to the
+                # ItemToPurchase object.
+                ItemToPurchase = object
+
+                # Set item quantity of ItemToPurchase object to
+                # the value of the variable item_quantity
+                ItemToPurchase.item_quantity = item_quantity
+
+                # If item_description of the object ItemToPurchase is not
+                # none, then modify the item_description value of current object
+                if ItemToPurchase.item_description != "none":
+                    object.item_description = ItemToPurchase.item_description
+
+                # If item_price of ItemToPurchase object is not 0, then
+                # modify item_price of current object
+                if ItemToPurchase.item_price != 0:
+                    object.item_price = ItemToPurchase.item_price
+
+                # If item_quantity of ItemToPurchase object is not 0, then
+                # modify the item-quantity of current object
+                if ItemToPurchase.item_quantity != 0:
+                    object.item_quantity = ItemToPurchase.item_quantity
+            # If value of item_found variable is still false,
+            # then item is not found.
+            if item_found == False:
+                print("\nItem not found in cart. Nothing modified.")
+
+
 
     # method to get the # of items in a cart
     def get_num_items_in_cart(self):
@@ -71,11 +140,11 @@ class ShoppingCart:
 
     # method to print each items' description
     def print_descriptions(self):
-            print("{}'s Shopping Cart - {}".format(self.customer_name, self.current_date))
-            print()
-            print('Item Descriptions')
-            for i in self.cart_items:
-                i.print_item_description()
+        print("{}'s Shopping Cart - {}".format(self.customer_name, self.current_date))
+        print()
+        print('Item Descriptions')
+        for i in self.cart_items:
+            i.print_item_description()
 
 
 if __name__ == "__main__":
