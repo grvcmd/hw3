@@ -35,7 +35,7 @@ def output_roster():
 
 # OBJ 4:
 # Define add_player() function.
-def add_user():
+def add_player():
     # Prompt user to enter a jersey number
     print("Enter a new player's jersey number:")
     jersey_num = int(input())
@@ -175,4 +175,30 @@ for i in range(1, 6):
 output_roster()
 print()
 
+# OBJ 2:
+# Add a menu of options. Each option is represented by a single character.
+# The program will initially output the menu, then menu is outputted again
+# after user chooses an option. Program ends when user chooses the option
+# to Quit.
 
+# Start a While Loop:
+while True:
+
+    # Display the menu.
+    print("Menu")
+    print("a - Add player")
+    print("d - Remove player")
+    print("u - Update player rating")
+    print("r - Output players above a rating")
+    print("o - Output roster")
+    print("q - Quit")
+    print()
+
+    # Prompt user to choose an option.
+    print("Choose an option:")
+    user_choice = input()
+    print()
+
+    # If option (a) is chosen, call add_player() function.
+    if user_choice == 'a':
+        add_player()
