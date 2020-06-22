@@ -19,6 +19,7 @@ def sort_dict_keys():
 # OBJ 3:
 # Define the function output_roster().
 def output_roster():
+
     # Call the sort_dict_keys() function to get
     # sorted list of dictionary keys.
     sorted_list_keys = sort_dict_keys()
@@ -26,6 +27,7 @@ def output_roster():
 
     # For loop to run through the list of keys
     for i in sorted_list_keys:
+
         # Display jersey number and player's rating
         # sorted by jersey number.
         print("Jersey number: {}, Rating: {}".format(i, player_dict[i]))
@@ -132,5 +134,45 @@ def output_player_above_rating():
             # and rating
             print("Jersey number: {}, Rating: {}".format(i, player_dict[i]))
 
+
+# OBJ 1:
+# Prompt user to input five pairs of numbers,
+# a player's jersey number (0 - 99) and the player's rating (1 - 9).
+# Store the jersey numbers and ratings in a dictionary then
+# output the dictionary's elements w/ the jersey numbers in ascending order
+
+# Begin a For loop from 1 to 6
+for i in range(1, 6):
+
+    # Prompt user to enter player's jersey number.
+    print("Enter player {}'s jersey number:".format(i))
+    jersey_number = int(input())
+
+    # Make sure jersey_number is between 0 - 99
+    while (jersey_number < 0) or (jersey_number > 99):
+        print("Invalid jersey number! Please enter again!")
+        print("Enter player {}'s jersey number:".format(i))
+        jersey_number = int(input())
+
+    # Prompt user to enter a player's rating
+    print("Enter player {}'s rating:".format(i))
+    player_rating = int(input())
+
+    # Make sure player rating is within 1 - 9
+    while (player_rating < 1) or (player_rating > 9):
+        print("Invalid rating! Please enter again!")
+        print("Enter player {}'s rating:".format(i))
+        player_rating = int(input())
+
+    print()
+
+    # Add jersey number as value and
+    # player rating as key in player_dict dictionary.
+    player_dict[jersey_number] = player_rating
+
+    # Call the output_roster() function to display
+    # player's details.
+output_roster()
+print()
 
 
