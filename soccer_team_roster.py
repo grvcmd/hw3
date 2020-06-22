@@ -197,8 +197,28 @@ while True:
     # Prompt user to choose an option.
     print("Choose an option:")
     user_choice = input()
-    print()
 
     # If option (a) is chosen, call add_player() function.
     if user_choice == 'a':
         add_player()
+
+    # If option (d) is chosen, call delete_player() function.
+    elif user_choice == 'b':
+        delete_player()
+
+    # If option (u) is chosen, call update_player_rating() function.
+    elif user_choice == 'u':
+        update_player_rating()
+
+    # If option (r) is chosen, call update_player_rating() function.
+    elif user_choice == 'r':
+        update_player_rating()
+
+    # If option (o) is chosen, call output_roster() function.
+    elif user_choice == 'o':
+        output_roster()
+
+    # If option (q) is chosen, break the While Loop.
+    elif user_choice == 'q':
+        break
+    print()
