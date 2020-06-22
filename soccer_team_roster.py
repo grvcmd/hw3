@@ -185,7 +185,7 @@ print()
 while True:
 
     # Display the menu.
-    print("Menu")
+    print("MENU")
     print("a - Add player")
     print("d - Remove player")
     print("u - Update player rating")
@@ -203,16 +203,16 @@ while True:
         add_player()
 
     # If option (d) is chosen, call delete_player() function.
-    elif user_choice == 'b':
+    elif user_choice == 'd':
         delete_player()
 
     # If option (u) is chosen, call update_player_rating() function.
     elif user_choice == 'u':
         update_player_rating()
 
-    # If option (r) is chosen, call update_player_rating() function.
+    # If option (r) is chosen, call output_player_above_rating() function.
     elif user_choice == 'r':
-        update_player_rating()
+        output_player_above_rating()
 
     # If option (o) is chosen, call output_roster() function.
     elif user_choice == 'o':
