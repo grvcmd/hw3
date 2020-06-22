@@ -110,42 +110,197 @@ class ShoppingCart:
             if item_found == False:
                 print("\nItem not found in cart. Nothing modified.")
 
-
-
-    # method to get the # of items in a cart
+    # Define get_num_items_in_cart() function
     def get_num_items_in_cart(self):
-        print(len(self.cart_items))
 
-    # method to return the total cost of all items in the cart
+        # Declare & initialize total_quantity to 0.
+        # This is where total quantity of the cart will be stored.
+        total_quantity = 0
+
+        # Go through cart_items list using For Loop
+        for object in self.cart_items:
+            total_quantity += object.item_quantity
+
+        # Return total_quantity variable
+        return total_quantity
+
+    # Define get_cost_of_cart() function
     def get_cost_of_cart(self):
+
+        # Declare & initialize total_cost variable to 0.
+        # This is where total cost of the cart will be stored.
         total_cost = 0
-        cost = 0
-        for i in self.cart_items:
-            cost = (i.item_quantity * i.item_price)
-            total_cost += cost
+
+        # Go through cart_items list using For Loop
+        for object in self.cart_items:
+            total_cost += object.item_price * object.item_quantity
+
+        # Return total cost of the cart.
         return total_cost
 
-    # method to print the total cost of objects in cart.
+    # Define print_total() function
     def print_total(self):
-        total_cost = self.get_cost_of_cart()
-        if total_cost == 0:
-            print('SHOPPING CART IS EMPTY')
-        else:
+
+        # If length of cart_items list is not 0
+        if len(self.cart_items) != 0:
+
+            # Display the title of the shopping cart.
             print("{}'s Shopping Cart - {}".format(self.customer_name, self.current_date))
-            print('Number of Items: {}'.format(self.get_num_items_in_cart()))
-            for i in self.cart_items:
-                total = i.item_price * i.item_quantity
-                print('{} {} @ ${} = ${}'.format(i.item_name, i.item_quantity, i.item_price, total))
-            print('Total: ${}'.format(total_cost()))
 
-    # method to print each items' description
+            # Display number of items in the cart by calling
+            # the get_num_items_in_cart() function.
+            print("Number of items: {}".format(self.get_num_items_in_cart()))
+            print()
+
+            # Go through cart_items list using a For Loop
+            for object in self.cart_items:
+                # Call print_item_cost() function for each object
+                # in the cart_items list
+                object.print_item_cost()
+
+            # Display the total cost of the cart by calling the
+            # get_cost_of_cart() function.
+            print("Total: ${}".format(self.get_cost_of_cart()))
+
+        # If cart is empty display 'SHOPPING CART IS EMPTY'
+        else:
+            print("\nSHOPPING CART IS EMPTY")
+
+    # Define print_descriptions function
     def print_descriptions(self):
+
+        # Display the title of the cart.
         print("{}'s Shopping Cart - {}".format(self.customer_name, self.current_date))
-        print()
-        print('Item Descriptions')
-        for i in self.cart_items:
-            i.print_item_description()
+
+        # Display item_description for each object in the cart_items list
+        # by going through the list using a For Loop and
+        # calling the print_item_description() function
+        print("\nItem Descriptions")
+        for object in self.cart_items:
+            object.print_item_description()
+
+# Define menuOfChoices():
+def menuOfChoices():
+
+    # Display the menu
+    print("\nMENU")
+    print("a - Add item to cart")
+    print("r - Remove item from cart")
+    print("c - Change item quantity")
+    print("i - Output items' descriptions")
+    print("o - Output shopping cart")
+    print("q - Quit")
 
 
-if __name__ == "__main__":
-    pass
+# OBJ 4:
+# Define the print_menu() function
+def print_menu(self):
+
+    # Declare & initialize required variable to store user choice
+    choice = ''
+
+    # Call the menuOfChoices() function to display the menu of choices
+    menuOfChoices()
+
+    # Prompt user to enter an option
+    choice = input("\nChoose an option: ")
+
+    # While Loop until the user's choice is q for Quit
+    while choice != 'q':
+
+        # OBJ 7:
+        # If the user's choice is (a)
+        if choice == 'a':
+            print("ADD ITEM TO CART")
+
+            # Prompt user to enter the item's
+            # name, price, quantity, and description.
+            print("Enter the item name:")
+            item_name = input()
+            print("Enter the item description:")
+            item_description = input()
+            print("Enter the item price:")
+            item_price = int(input())
+            print("Enter the item quantity:")
+            item_quantity = int(input())
+
+            # Create an object of the ItemToPurchase class
+            # and pass the required parameters
+            item = ItemToPurchase(item_name, item_price, item_quantity, item_description)
+
+            # Call add_item() function and pass the object
+            # of the ItemToPurchase class.
+            self.add_item(item)
+
+        # OBJ 8:
+        # if user choice is (r)
+        elif choice == 'r':
+            print("REMOVE ITEM FROM CART")
+
+            # Prompt user to enter the item_name
+            print("Enter name of item to remove:")
+            item_name = input()
+
+            # Call the remove_item() function and pass the item_name
+            # the user specified
+            self.remove_item(item_name)
+
+        # OBJ 9:
+        # If user choice is (c)
+        elif choice == 'c':
+            print("CHANGE ITEM QUANTITY")
+
+            # Prompt user to enter the item_name
+            print("Enter the item name:")
+            item_name = input()
+
+            # Create an object of the ItemToPurchase class by passing the item_name
+            # to as the parameter
+            item = ItemToPurchase(item_name)
+
+            # Call the modify_item() function and pass
+            # the ItemToPurchase object
+            self.modify_item(item)
+
+        # OBJ 6:
+        # If the user choice is (i) call the print_descriptions() function
+        elif choice == 'i':
+            print("OUTPUT ITEMS' DESCRIPTIONS")
+            self.print_descriptions()
+
+        # OBJ 5:
+        # if the user choice is (o), call the print_total() function
+        elif choice == 'o':
+            print("OUTPUT SHOPPING CART")
+            self.print_total()
+
+        # Call function menuOfChoices() and prompt
+        # user to enter another option
+        menuOfChoices()
+        choice = input("Choose an option: ")
+
+
+# OBJ 3:
+# Define the main() function.
+def main():
+
+    # Prompt user to enter customer_name and current_date
+    print("Enter customer's name:")
+    customer_name = input()
+    print("Enter today's date:\n")
+    current_date = input()
+
+    # Create an object of the ShoppingCart class
+    # by passing the parameters
+    mycart = ShoppingCart(customer_name, current_date)
+
+    # Display customer_name and current_date
+    print("Customer name: {}".format(mycart.customer_name))
+    print("Today's date: {}".format(mycart.current_date))
+
+    # Call print_menu() function and [ass the
+    # object of the ShoppingCart class.
+    print_menu(mycart)
+
+# Call the main() function to start the program.
+main()
